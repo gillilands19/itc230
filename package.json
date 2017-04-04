@@ -1,0 +1,22 @@
+{
+  "name": "itc230",
+  "version": "1.0.0",
+  "description": "application space for itc230",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gillilands19/itc230.git"
+  },
+  "author": "Sean Gilliland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gillilands19/itc230/issues"
+  },
+  "homepage": "https://github.com/gillilands19/itc230#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
