@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ITC 230 Home</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Search For A Band</h1>
+    <form method="get" action="/search" name="search">
+        <label>Search by Band Name: </label>
+            <input type="text" name="name" placeholder="Enter Band Name">
+        <br>
+        <br>
+        <label>Search by Years Active: </label>
+            <input type="text" name="yearsActive" placeholder="Enter Years Active">
+        <br>
+        <br>
+        <label>Search by Genre: </label>
+            <input type="text" name="genre" placeholder="Enter Genre">
+        <br>
+        <br>
+        <input type="submit" value="Find Band">
+    </form>
+    <br>
+    <br>
+    <h1>Add Band</h1>
+    <form method="post" action="/add" name="add">
+        <input type="text" name="name" placeholder="Enter Band Name" required>
+        <input type="text" name="yearsActive" placeholder="Enter Years Active" required>
+        <input type="text" name="genre" placeholder="Enter Genre" required>
+        <input type="submit" value="Add Band">
+    </form>
+    <br>
+    <br>
+    <h1>Remove Band</h1>
+    <form method="post" action="/delete" name="delete">
+        <input type="text" name="name" placeholder="Enter Band Name" required>
+        <input type="submit" value="Remove Band">
+    </form>
+
+
+</body>
