@@ -4,24 +4,29 @@
 const express = require('express');
 const band = require('./lib/bandshw3.js');
 const app = express();
+const handlebars = require('express-handlebars');
 const setRoot = {root : __dirname + '/public'}; // set root directory sendFile method
+
 
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public')); // set the Static file location. __dirname is string that returns the current module's directory path
 app.use(require('body-parser').urlencoded({extended : true})); //used to parse form submissions that use POST method
 
+app.engine('.html', handlebars({extname : '.html'}));
+app.set('view engine', '.html');
+
 //start routes
 
 app.get('/', (req, res) => {
-    res.sendFile('/home2.html', setRoot);
+    res.render('home');
 });
 
 app.get('/about', (req, res) => {
-    res.sendFile('/about.html', setroot)
+    res.render('about');
 });
 
 app.get('/search', (req, res) => {
-    res.type('text/plain');
+    
     let searchMatch = ''; // declare searchMatch
     
     //set variable to pass to getBand function based on which form values were filled out.
@@ -33,24 +38,22 @@ app.get('/search', (req, res) => {
         searchMatch = band.getBand(req.query.genre);
     }
     
-    res.send(searchMatch);
+    res.render('search', {results: searchMatch});
 });
 
 // add route
 app.post('/add', (req, res) =>{
-    res.type('text/plain');
     let name = req.body.name; // get value from name field
     let years = req.body.yearsActive; //get value from years field
     let genre = req.body.genre; // get value from genre field
     let addMatch = band.addBand(name, years, genre); // pass form field values to addBand function
-    res.send(addMatch);
+    res.render('add', {results: addMatch});
 });
 
 app.post('/delete', (req, res) => {
-    res.type('text/plain');
     let name = req.body.name; // get value from name field
     let deleteMatch = band.deleteBand(name);
-    res.send(deleteMatch);
+    res.render('delete', {results: deleteMatch});
 });
 
 // set 404 route
