@@ -1,13 +1,12 @@
 {
     "env": {
-        "browser": true,
-        "commonjs": true,
+		"node": true,
         "es6": true
     },
     "extends": "eslint:recommended",
     "rules": {
         "indent": [
-            "error",
+            "warn",
             "tab"
         ],
         "linebreak-style": [
@@ -21,6 +20,11 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+		"prefer-arrow-callback": "warn",
+		
+		"no-var": "warn",
+		
+		"no-console": "warn"
     }
 }
