@@ -8,8 +8,12 @@
 <body>
     
     <h2>Band Added!</h2>
-    
-    {{results}}
+    <br>
+    {{#if results}}
+		{{results.name}} added, Thanks!.
+	{{else}}
+		Band already exists, please add a different band.
+	{{/if}}
     <br>
     <br>
     <a href="/"><button>Go Back</button></a>

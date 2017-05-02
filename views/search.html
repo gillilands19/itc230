@@ -9,9 +9,11 @@
     
     <h2>Search Results</h2>
     
-    {{results}}
-    <br>
-    <br>
+    {{#if results}}
+		Band Found: {{results.name}}, Years Active: {{results.yearsActive}}, Genre: {{results.genre}}
+    {{else}}
+		Band Not Found
+	{{/if}}
     <a href="/"><button>Go Back</button></a>
     
 </body>

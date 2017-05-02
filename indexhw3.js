@@ -47,13 +47,26 @@ app.post('/add', (req, res) =>{
 	let years = req.body.yearsActive; //get value from years field
 	let genre = req.body.genre; // get value from genre field
 	let addMatch = band.addBand(name, years, genre); // pass form field values to addBand function
-	res.render('add', {results: addMatch});
+	
+	res.render('add', {results: addMatch });
 });
 
 app.post('/delete', (req, res) => {
 	let name = req.body.name; // get value from name field
 	let deleteMatch = band.deleteBand(name);
-	res.render('delete', {results: deleteMatch});
+	let results = '';
+	
+	if (deleteMatch > 1) {
+		results = `Band removed, there are ${deleteMatch} bands left`;
+	} else if (deleteMatch == 1) {
+		results = `Band Removed, there is ${deleteMatch} band left`;
+	} else if (deleteMatch == 0) {
+		results = 'Band removed, no bands left!';
+	} else {
+		results = 'Band not found, no bands removed.';
+	}
+	
+	res.render('delete', {results: results});
 });
 
 // set 404 route
