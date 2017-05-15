@@ -1,0 +1,38 @@
+{{#if searchAction}}
+
+<h2>Search Results</h2>
+
+	{{#if searchResults}}
+	Band Found: {{searchResults.name}}, Years Active: {{searchResults.yearsActive}}, Genre: {{searchResults.genre}}
+<br>
+<form>
+<button type="submit" formaction="/delete" formmethod="post" name="name" value="{{searchResults.name}}">Delete</button>
+</form>
+<br>
+    {{else}}
+		Band Not Found
+<br>
+	{{/if}}
+
+{{/if}}
+
+{{#if addAction}}
+
+	{{#if addResults}}
+		{{addResults.name}} added, Thanks!
+<br>
+	{{else}}
+		Band already exists, please add a different band.
+<br>
+	{{/if}}
+
+{{/if}}
+
+{{#if deleteAction}}
+
+	{{#if deleteResults}}
+		{{deleteResults}}
+<br>
+	{{/if}}
+
+{{/if}}

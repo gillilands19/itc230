@@ -19,7 +19,8 @@ app.set('view engine', 'handlebars');
 //start routes
 
 app.get('/', (req, res) => {
-	res.render('home', { layout: null});
+	let getAll = band.allBands();
+	res.render('home', { bands: getAll });
 });
 
 app.get('/about', (req, res) => {
@@ -38,8 +39,7 @@ app.get('/search', (req, res) => {
 	} else {
 		searchMatch = band.getBand(req.query.genre);
 	}
-    
-	res.render('search', { layout : null, results: searchMatch});
+	res.render('detail', { searchResults: searchMatch, searchAction: 'Search Results'});
 });
 
 // add route
@@ -49,7 +49,7 @@ app.post('/add', (req, res) =>{
 	let genre = req.body.genre; // get value from genre field
 	let addMatch = band.addBand(name, years, genre); // pass form field values to addBand function
 	
-	res.render('add', {results: addMatch });
+	res.render('detail', {addResults: addMatch, addAction: 'Band Added' });
 });
 
 app.post('/delete', (req, res) => {
@@ -67,7 +67,7 @@ app.post('/delete', (req, res) => {
 		results = 'Band not found, no bands removed.';
 	}
 	
-	res.render('delete', {results: results});
+	res.render('detail', {deleteResults: results, deleteAction: 'Band Removed'});
 });
 
 // set 404 route

@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>ITC 230 Home</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-</head>
-<body>
-    <h1>Search For A Band</h1>
+{{#if bands}}
+
+<h1>Bands List</h1>
+<ul>
+	{{#each bands}}
+	<li><a data-band="{{name}}" href="/search?name={{name}}">{{name}}</a></li>
+	{{/each}}
+
+</ul>
+
+{{else}}
+
+<h1>Bands List</h1>
+No Bands Left!
+
+{{/if}}
+
+
+<h1>Search For A Band</h1>
     <form method="get" action="/search" name="search">
         <label>Search by Band Name: </label>
             <input type="text" name="name" placeholder="Enter Band Name">
@@ -38,6 +48,5 @@
         <input type="text" name="name" placeholder="Enter Band Name" required>
         <input type="submit" value="Remove Band">
     </form>
-
-
-</body>
+<br>
+<br>
