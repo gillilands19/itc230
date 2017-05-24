@@ -4,12 +4,14 @@
 <h2>Search Results</h2>
 
 	{{#if searchResults}}
-	Band Found: {{searchResults.name}}, Years Active: {{searchResults.yearsActive}}, Genre: {{searchResults.genre}}
-<br>
-<form>
-<button type="submit" formaction="/delete" formmethod="post" name="name" value="{{searchResults.name}}">Delete</button>
-</form>
-<br>
+		{{#each searchResults}}
+			Band Found: {{name}}, Years Active: {{yearsActive}}, Genre: {{genre}}
+			<form>
+				<button type="submit" formaction="/delete" formmethod="post" name="name" value="{{name}}">Delete</button>
+			</form>
+			<br>
+		{{/each}}
+
     {{else}}
 		Band Not Found
 <br>

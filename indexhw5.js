@@ -33,11 +33,11 @@ app.get('/search', (req, res) => {
     
     //set variable to pass to getBand function based on which form values were filled out.
 	if(req.query.name){ 
-		searchMatch = band.getBand(req.query.name); 
+		searchMatch = band.searchBands(req.query.name); 
 	} else if (req.query.yearsActive){
-		searchMatch = band.getBand(req.query.yearsActive);
+		searchMatch = band.searchBands(req.query.yearsActive);
 	} else {
-		searchMatch = band.getBand(req.query.genre);
+		searchMatch = band.searchBands(req.query.genre);
 	}
 	res.render('detail', { searchResults: searchMatch, searchAction: 'Search Results'});
 });
