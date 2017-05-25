@@ -11,7 +11,6 @@
 			</form>
 			<br>
 		{{/each}}
-
     {{else}}
 		Band Not Found
 <br>
@@ -22,7 +21,7 @@
 {{#if addAction}}
 
 	{{#if addResults}}
-		{{addResults.name}} added, Thanks!
+		{{addResults}} added, Thanks!
 <br>
 	{{else}}
 		Band already exists, please add a different band.
@@ -34,7 +33,7 @@
 {{#if deleteAction}}
 
 	{{#if deleteResults}}
-		{{deleteResults}}
+		{{deleteResults.result.n}} Bands Removed, {{total}} Bands Remain.
 <br>
 	{{/if}}
 
